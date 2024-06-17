@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Output</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function fetchData() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            fetch('/DataOutput?username=' + username + '&password=' + password)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    var table = document.getElementById("dataTable");
+                    table.innerHTML = "<tr><th>Cédula</th><th>Nombres</th><th>Salario</th><th>Cargo</th></tr>";
+                    data.forEach(row => {
+                        var tr = document.createElement("tr");
+                        var cedula = document.createElement("td");
+                        var nombres = document.createElement("td");
+                        var salario = document.createElement("td");
+                        var cargo = document.createElement("td");
+                        cedula.textContent = row.cedula;
+                        nombres.textContent = row.nombres;
+                        salario.textContent = row.salario;
+                        cargo.textContent = row.cargo;
+                        tr.appendChild(cedula);
+                        tr.appendChild(nombres);
+                        tr.appendChild(salario);
+                        tr.appendChild(cargo);
+                        table.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Data Output</h1>
+    <form onsubmit="fetchData(); return false;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <input type="submit" value="Fetch Data">
+    </form>
+    <br>
+    <table id="dataTable">
+        <tr>
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Salario</th>
+            <th>Cargo</th>
+        </tr>
+    </table>
+</body>
+</html>

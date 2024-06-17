@@ -1,0 +1,15 @@
+﻿ModuleBookmarks0=
+ModuleBookmarks1=
+ModuleBookmarks2=
+ModuleBookmarks3=
+ModuleBreakpoints0=
+ModuleBreakpoints1=
+ModuleBreakpoints2=
+ModuleBreakpoints3=
+ModuleClosedNodes0=1,2,6
+ModuleClosedNodes1=1
+ModuleClosedNodes2=
+ModuleClosedNodes3=1
+NavigationStack=Servidor,Service_TaskRemoved,25,0,Servidor,Service_Create,14,0,Main,Activity_Create,26,0,B4XMainPage,B4XPage_Created,17,0,Main,Create_Menu,67,0,B4XMainPage,Button1_Click,27,2,Servidor,Service_Start,22,0,Servidor,ServeFile,140,0,Servidor,HandleDataInput,107,6,Servidor,HandleDataOutput,114,6
+SelectedBuild=0
+VisibleModules=1,2
